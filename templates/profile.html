@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    
+<body class="bg-light">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <div class="container">
+        <br>
+        <div class="row d-flex justify-content-center card shadow p-3 col-10 mx-auto">
+            <div class="col-md-0 mt-0 pt-5">
+                <div class="row z-depth-3">
+                    <div class="col-sm-4 bg-info rounded-left">
+                        <div class="card-block text-center text-white">
+                            <i class="fas fa-user-tie fa-7x mt-5"></i>
+                            <h2 class="font-weight-bold mt-4"></h2>
+                            <p>{{user.username}}</p>
+                            <i class="far fa-edit fa-2x mb-4"></i>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-8 bg-white rounded-right">
+                        <h3 class="mt-3 text-center">Welcome, @{{user.username}}</h3>
+                        <hr class="badge-primary mt-0 w-100">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h6 class="font-weight-bold">Email:</h6>
+                                <h6 class="text-muted">{{user.email}}</h6>
+                                
+                            </div>
+                            {% comment %}  <div class="col-sm-6">
+                                <h6 class="font-weight-bold">Phone:</h6>
+                                <h6 class="text-muted">+977-01-45285</h6>
+
+                            </div> {% endcomment %}
+                            <div class="col-sm-6">
+                              <h6 class="font-weight-bold">Full Name:</h6>
+                              <h6 class="text-muted">{{user.first_name}} {{user.last_name}}</h6>
+                              
+                        </div>
+                    </div>
+                </div>
+
+
+
+     
+
+      <div class="row">
+        
+        <div class="container">
+            <br>
+          <h4 class="mb-3">Address</h4>
+          <form  class="needs-validation" novalidate="" onsubmit="process(event)>
+            
+
+
+            <div class="mb-3">
+              <label for="Phone">Enter your phone number:</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">
+                  <select class="custom-select" id="countryCode" required="">
+                    <option data-countryCode="GB" value="44" Selected>UK (+44)</option>
+	                  <option data-countryCode="US" value="1">USA (+1)</option>
+                    <option data-countryCode="IN" value="91">India (+91)</option>
+                    <option data-countryCode="NP" value="977">Nepal (+977)</option>
+                  </select>
+                </span>
+              
+              <input type="tel" class="form-control" id="phone" placeholder=" 012 564 2561" required=""name="phone">
+              <div class="invalid-feedback">
+                Please enter your Phone Number.
+              </div>
+            </div>
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required=""name="address">
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+{% comment%}
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">Country</label>
+                <select class="custom-select d-block w-100" id="country" required="">
+                  <option value="">Choose...</option>
+                  <option>Nepal</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="state">State</label>
+                <select class="custom-select d-block w-100" id="state" required="">
+                  <option value="">Choose...</option>
+                 <option>Bagmati</option>
+                <option>Gandaki</option>
+                <option>Lumbini</option>
+
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="zip">Zip</label>
+                <input type="text" class="form-control" id="zip" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="save-info">
+              <label class="custom-control-label" for="save-info">Save this information for next time</label>
+            </div>
+            <hr class="mb-4">
+
+            <h4 class="mb-3">Bank Details</h4>
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="bank_name">Bank</label>
+                <select class="custom-select d-block w-100" id="bank_name" required="">
+                  <option value="">Choose...</option>
+                  <option>Global IME Bank Ltd.</option>
+                  <option>Nepal Investment Bank Ltd.</option>
+                  <option>Nabil Bank Ltd.</option>
+                  <option>NIC Asia Bank Ltd.</option>
+                  <option>Prabhu Bank Ltd.</option>
+                  <option>Siddhartha Bank Ltd.</option>
+                  <option>Himalayan Bank Ltd.</option>
+                  <option>Sanima Bank Ltd.</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid Bank
+                </div>
+              </div>
+            <div class="d-block my-3">
+              <div class="custom-control ">
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-name">Account Holder Name</label>
+                <input type="text" class="form-control" id="acc-name" placeholder="" required="">
+                <small class="text-muted">Account Holder Name of Selected bank</small>
+                <div class="invalid-feedback">
+                  Acc Name is required
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cc-number">Account number</label>
+                <input type="text" class="form-control" id="acc-number" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Account number is required
+                </div>
+              </div>
+            </div>
+            {% endcomment %}
+        <div class="form-group mb-3">
+          <input
+            type="submit"
+            value="Save Your Profile"
+            class="form-control btn btn-primary"
+          />
+        </div>
+          </form>
+        </div>
+      </div>
+  </div>
+        </div>
+        </div>
+  </section>
+{% endblock %}

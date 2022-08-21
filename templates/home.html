@@ -1,0 +1,71 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <section class=" text-center">
+    {% comment %} <div style="background-image: url('/static/img/bg_light.png');background-size: cover; height:480px;"> {% endcomment %}
+    <div class="row py-lg-5" >
+      <!img src="/static/img/bg_light.png">
+      <div class="col-lg-6 col-md-8 mx-auto" >
+        <img src="/static/SpotLight_Logos/logo6.png">
+
+        <h5 class=" text-muted "> We construct dreams.
+        SpotLight is where early adopters and innovation seekers find lively, imaginative projects before it hits the mainstream.</h5>
+        <p>
+          <a href="/creator/create" class="btn btn-primary my-2">Add a new project</a>
+          <a href="/creator/projects" class="btn btn-secondary my-2">View Projects</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="text-left my-4">
+        <h2>FEATURED PROJECT</h2>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% comment %} {% for pr in projects|slice:":9" %}
+            <div class="col">
+            <div class="card shadow-sm">
+              <div class="overflow-hidden container center" style="height: 250px; display: flex; justify-content: center;">
+                {% if pr.image %}
+                  <img src="{{pr.image.url}}" onerror="this.onerror=null;this.src='static/img/no image.png';">
+                {% endif %}
+                
+                {% if not pr.image %}
+                  <img src="static/img/no image.png">
+                {% endif %}
+              </div>
+
+              <div class="card-body">
+              <h4>{{pr.title}}</h4>
+                <p class="card-text">{{pr.description|truncatechars:140}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="/creator/project/{{pr.id}}" class="btn btn-sm btn-outline-secondary">
+                      View
+                    </a>
+                    <a href="/investor/checkout/{{pr.id}}" class="btn btn-sm btn-outline-secondary">
+                      Fund
+                    </a>
+                  </div>
+                  <small class="text-muted">{{pr.TargetLaunchDate}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %} {% endcomment %}
+      </div>
+
+      <div class="w-100 pt-3 text-center" >
+        <a class="btn btn-success" href="/creator/projects">Explore Projects</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
