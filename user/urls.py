@@ -12,7 +12,7 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(),
          name='profile'),
     path('login/',
-         auth_views.LoginView.as_view(
+         UserLoginView.as_view(
              template_name='auth/login.html'),
          name='login'),
     path('accounts/logout/',
