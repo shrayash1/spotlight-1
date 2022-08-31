@@ -20,6 +20,7 @@
         <div class="container-fluid" style="display: flex; justify-content: space-around">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item pt-1"><a class="dropdown-item" href="{% url 'home'%}">Home</a></li>
                     <li class="nav-item">
                         <a class="navbar-brand" href="{% url 'home' %}"><img
                                 src="/static/SpotLight_Logos/logo_mini1.png" height="45" class="img-responsive"
@@ -36,7 +37,7 @@
                             Explore
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/creator/create">Create Project</a></li>
+                            <li><a class="dropdown-item" href="{% url 'create-project' %}">Create Project</a></li>
                             {% comment %}<li><a class="dropdown-item" href="/investor/investor">Fund Project</a></li>{% endcomment %}
                             <li>
                                 <hr class="dropdown-divider">
@@ -50,12 +51,12 @@
                             Categories
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Art</a></li>
-                            <li><a class="dropdown-item" href="#">Technology</a></li>
-                            <li><a class="dropdown-item" href="#">Fashion</a></li>
-                            <li><a class="dropdown-item" href="#">Food</a></li>
-                            <li><a class="dropdown-item" href="#">Photography</a></li>
-                            <li><a class="dropdown-item" href="#">Others</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home' str='art'%}">Art</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home' str='technology'%}">Technology</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home' str='fashion'%}">Fashion</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home' str='food'%}">Food</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home' str='photography'%}">Photography</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home' str='others'%}">Others</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -77,7 +78,7 @@
                             Account
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                             <li><a class="dropdown-item" href="{% url 'signup' %}">Register</a></li>
                             {% if request.user.is_authenticated %}
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>

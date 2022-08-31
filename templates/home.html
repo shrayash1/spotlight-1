@@ -11,7 +11,7 @@
         <h5 class=" text-muted "> We construct dreams.
         SpotLight is where early adopters and innovation seekers find lively, imaginative projects before it hits the mainstream.</h5>
         <p>
-          <a href="/creator/create" class="btn btn-primary my-2">Add a new project</a>
+          <a href="{% url 'create-project' %}" class="btn btn-primary my-2">Add a new project</a>
           <a href="/creator/projects" class="btn btn-secondary my-2">View Projects</a>
         </p>
       </div>
@@ -21,18 +21,17 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="text-left my-4">
         <h2>FEATURED PROJECT</h2>
       </div>
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% comment %} {% for pr in projects|slice:":9" %}
+         {% for pr in project %}
             <div class="col">
             <div class="card shadow-sm">
               <div class="overflow-hidden container center" style="height: 250px; display: flex; justify-content: center;">
                 {% if pr.image %}
-                  <img src="{{pr.image.url}}" onerror="this.onerror=null;this.src='static/img/no image.png';">
+                  <img src="{{ pr.image.url }}">
                 {% endif %}
                 
                 {% if not pr.image %}
@@ -42,22 +41,23 @@
 
               <div class="card-body">
               <h4>{{pr.title}}</h4>
+              <p class="text-muted p-0 m-0">Category: {{pr.category}}</p>
                 <p class="card-text">{{pr.description|truncatechars:140}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <a href="/creator/project/{{pr.id}}" class="btn btn-sm btn-outline-secondary">
+                    <a href="{% url 'project-detail' pr.id%}" class="btn btn-sm btn-outline-secondary">
                       View
                     </a>
                     <a href="/investor/checkout/{{pr.id}}" class="btn btn-sm btn-outline-secondary">
                       Fund
                     </a>
                   </div>
-                  <small class="text-muted">{{pr.TargetLaunchDate}}</small>
+                  <small class="text-muted">{{pr.created_date}}</small>
                 </div>
               </div>
             </div>
           </div>
-        {% endfor %} {% endcomment %}
+        {% endfor %}
       </div>
 
       <div class="w-100 pt-3 text-center" >
