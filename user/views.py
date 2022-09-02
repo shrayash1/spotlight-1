@@ -2,6 +2,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from django.views.generic.base import TemplateView
+
+from project.models import Project
 from .forms import SignUpForm
 from .models import Profile
     
@@ -28,4 +30,5 @@ class ProfileView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['user'] = Profile.objects.get(user=self.request.user)
+        context['projects'] =  Project.objects.filter(creator = self.request.user)
         return context

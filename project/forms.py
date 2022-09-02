@@ -8,4 +8,4 @@ class CreateProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = '__all__'
-        exclude = ['creator','created_date','views', 'favourite','funding_amount']
+        exclude = ['creator','created_date','views', 'favourite']
