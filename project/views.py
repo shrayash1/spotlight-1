@@ -68,3 +68,5 @@ class ProjectDetailView(DetailView):
         self.object.refresh_from_db()
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
+class ProfileView(TemplateView):
+    template_name = 'profile.html'
